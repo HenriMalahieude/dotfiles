@@ -1,0 +1,9 @@
+\.git
+\.gitignore
+
+.*\.swp		# n/vim swap files
+
+^/README.*
+^/LICENSE.*
+
+Makefile
