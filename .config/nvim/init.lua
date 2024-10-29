@@ -1,6 +1,6 @@
 --Standard
 vim.g.mapleader = " "
-vim.g.title = false
+vim.g.title = true
 
 --NetRW Configs
 vim.g.netrw_banner = 0
@@ -32,6 +32,9 @@ vim.cmd('colorscheme koehler')
 vim.cmd('filetype plugin on')
 vim.cmd('set wildmenu')
 
+vim.cmd('let loaded_matchparen=1') -- there seems to be a weird bug related to it
+--vim.cmd('NoMatchParen')
+
 function map(mode, lhs, rhs, opts)
 	local options = {noremap = true}
 	if opts then
@@ -41,7 +44,7 @@ function map(mode, lhs, rhs, opts)
 end
 
 --Normal Section
-map("n", "<leader>dotfiles", ":!make -C ~/dotfiles<CR>");
+map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
 map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
 map("n", "<leader>e", ":vnew .<CR>") --split window and open netrw
 map("n", "<leader>E", ":new .<CR>") --split window horizontal and open netrw
