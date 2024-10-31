@@ -32,7 +32,7 @@ vim.cmd('colorscheme koehler')
 vim.cmd('filetype plugin on')
 vim.cmd('set wildmenu')
 
-vim.cmd('let loaded_matchparen=1') -- there seems to be a weird bug related to it
+--vim.cmd('let loaded_matchparen=1') -- there seems to be a weird bug related to it
 --vim.cmd('NoMatchParen')
 
 function map(mode, lhs, rhs, opts)
