@@ -15,16 +15,16 @@ clean: $(system)_clean
 
 #Linux Version
 GNU/Linux:
-	$(info [.] Stowing files)
+	$(info [.]$(TAB)Stowing files)
 	@stow .
 
 GNU/Linux_clean:
-	$(info [.] Destowing files)
+	$(info [.]$(TAB)Destowing files)
 	@stow -D .
 
 #Windows Version
 Msys:
-	$(info [X] Not Implemented!)
+	$(info [X]$(TAB)Not Implemented!)
 
 Msys_clean:
-	$(info [X] Not Implemented!)
+	$(info [X]$(TAB)Not Implemented!)
