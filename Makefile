@@ -24,9 +24,9 @@ GNU/Linux_clean:
 
 #Windows Version
 Msys:
-	cp -r ./.config/nvim/ ~/AppData/Local/
+	@cp -r ./.config/nvim/ ~/AppData/Local/
 	$(info [.]$(TAB)Copying files)
 
 Msys_clean:
-	rm -rf ~/AppData/Local/nvim
+	@rm -rf ~/AppData/Local/nvim
 	$(info [.]$(TAB)Deleting files)
