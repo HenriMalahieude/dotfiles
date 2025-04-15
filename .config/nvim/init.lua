@@ -43,6 +43,14 @@ function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function unmap(mode, lhs)	
+	local status, err = pcall(vim.api.nvim_del_keymap(mode, lhs))
+	if not status then
+		print("Could not unmap " .. mode .. " " .. lhs .. ": " .. err)
+	end
+	return status
+end
+
 --Normal Section
 map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
 map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
@@ -51,14 +59,20 @@ map("n", "<leader>E", ":new .<CR>") --split window horizontal and open netrw
 map("n", "<leader>.", ":e .<CR>") --find a new location
 map("n", "<leader>t", ":new . <CR>:term<CR><C-w>J:resize 15<CR>") --Create VSCode style terminal
 map("n", "<leader>p", "\"+p"); --pasting from system clipboard
---map("n", "<leader><leader>", "@@") --repeat the search
+--map("n", "<leader><leader>", "@@") --repeat a saved method
+
+--unmap("n", "J") --join, but that's annoying
+map("n", "J", "Hzz")
+
+--unmap("n", "K") --on unix it's mapped to 'man', but idc
+map("n", "K", "Lzz")
 
 --Visual Section
 function surround(charL, charR)
 	return ":<esc>`>a" .. charR .. "<esc>`<i" .. charL .. "<esc>"
 end
 map("v", "'", surround("'", "'"))
-map("v", "\"", surround("\"", "\""))
+map("v", "\"\"", surround("\"", "\""))
 map("v", "(", surround("(", ")"))
 map("v", ")", surround("(", ")"))
 map("v", "[", surround("[", "]"))
@@ -67,7 +81,7 @@ map("v", "{", surround("{", "}"))
 map("v", "}", surround("{", "}"))
 
 map("v", "<leader>/", "y/<C-r>\"<CR>");
---map("v", "<leader>y", "\"+y");  --unfortunately cannot map this because map " alr
+map("v", "<leader>y", "\"+y");  --unfortunately cannot map this because map " alr
 
 --Insert Section
 --map("i", "jk", "<esc>")
