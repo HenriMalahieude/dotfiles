@@ -24,7 +24,9 @@ GNU/Linux_clean:
 
 #Windows Version
 Msys:
-	$(info [X]$(TAB)Not Implemented!)
+	@cp -r ./.config/nvim/ ~/AppData/Local/
+	$(info [.]$(TAB)Copying files)
 
 Msys_clean:
-	$(info [X]$(TAB)Not Implemented!)
+	@rm -rf ~/AppData/Local/nvim
+	$(info [.]$(TAB)Deleting files)
