@@ -62,10 +62,10 @@ map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 --map("n", "<leader><leader>", "@@") --repeat a saved method
 
 --unmap("n", "J") --join, but that's annoying
-map("n", "J", "Hzz")
+map("n", "J", "Lzz")
 
 --unmap("n", "K") --on unix it's mapped to 'man', but idc
-map("n", "K", "Lzz")
+map("n", "K", "Hzz")
 
 --Visual Section
 function surround(charL, charR)
