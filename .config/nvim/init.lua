@@ -15,6 +15,7 @@ vim.opt.compatible = false
 vim.opt.number = true
 --vim.opt.relativenumber = false --for now I don't enjoy this
 --vim.opt.mouse = 'a' --annoying
+vim.opt.showtabline = 1
 vim.opt.tabstop = 4 --spaces
 vim.opt.shiftwidth = 4
 vim.opt.fileencoding = "utf-8"
@@ -52,6 +53,7 @@ function unmap(mode, lhs)
 end
 
 --Normal Section
+---Leader
 map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
 map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
 map("n", "<leader>e", ":vnew .<CR>") --split window and open netrw
@@ -60,6 +62,10 @@ map("n", "<leader>.", ":e .<CR>") --find a new location
 map("n", "<leader>t", ":new . <CR>:term<CR><C-w>J:resize 15<CR>") --Create VSCode style terminal
 map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 --map("n", "<leader><leader>", "@@") --repeat a saved method
+---Else
+map('n', '<M-l>', ":tabn<CR>");
+map('n', '<M-h>', ":tabp<CR>");
+map('n', '<M-w>', ":tabnew<CR>");
 
 --unmap("n", "J") --join, but that's annoying
 map("n", "J", "Lzz")
