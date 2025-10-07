@@ -65,7 +65,7 @@ map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 ---Else
 map('n', '<M-l>', ":tabn<CR>");
 map('n', '<M-h>', ":tabp<CR>");
-map('n', '<M-w>', ":tabnew<CR>");
+map('n', '<M-w>', ":tabnew .<CR>");
 
 --unmap("n", "J") --join, but that's annoying
 map("n", "J", "Lzz")
