@@ -15,6 +15,7 @@ vim.opt.compatible = false
 vim.opt.number = true
 --vim.opt.relativenumber = false --for now I don't enjoy this
 --vim.opt.mouse = 'a' --annoying
+vim.opt.showbreak = "> "
 vim.opt.showtabline = 1
 vim.opt.tabstop = 4 --spaces
 vim.opt.shiftwidth = 4
@@ -24,8 +25,8 @@ vim.opt.showtabline = 2
 vim.opt.laststatus = 2
 vim.opt.showcmd = true
 vim.opt.showmode = true
-vim.opt.scrolloff = 2
-vim.opt.sidescrolloff = 2
+vim.opt.scrolloff = 1
+vim.opt.sidescrolloff = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.termguicolors = true
@@ -66,6 +67,7 @@ map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 map('n', '<M-l>', ":tabn<CR>");
 map('n', '<M-h>', ":tabp<CR>");
 map('n', '<M-w>', ":tabnew .<CR>");
+map("n", "<esc>", ":noh<cr>")
 
 --unmap("n", "J") --join, but that's annoying
 map("n", "J", "Lzz")

@@ -16,11 +16,11 @@ clean: $(system)_clean
 #Linux Version
 GNU/Linux:
 	$(info [.]$(TAB)Stowing files)
-	@stow .
+	@stow . -t ~/
 
 GNU/Linux_clean:
 	$(info [.]$(TAB)Destowing files)
-	@stow -D .
+	@stow -D . -t ~/
 
 #Windows Version
 Msys:
