@@ -37,6 +37,11 @@ vim.cmd('set wildmenu')
 --vim.cmd('let loaded_matchparen=1') -- there seems to be a weird bug related to it
 --vim.cmd('NoMatchParen')
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*" },
+	command = [[%s/\s\+$//e]],
+})
+
 function map(mode, lhs, rhs, opts)
 	local options = {noremap = true}
 	if opts then
@@ -45,7 +50,7 @@ function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-function unmap(mode, lhs)	
+function unmap(mode, lhs)
 	local status, err = pcall(vim.api.nvim_del_keymap(mode, lhs))
 	if not status then
 		print("Could not unmap " .. mode .. " " .. lhs .. ": " .. err)
@@ -76,6 +81,7 @@ map("n", "J", "Lzz")
 map("n", "K", "Hzz")
 
 --Visual Section
+--[[
 function surround(charL, charR)
 	return ":<esc>`>a" .. charR .. "<esc>`<i" .. charL .. "<esc>"
 end
@@ -86,7 +92,7 @@ map("v", ")", surround("(", ")"))
 map("v", "[", surround("[", "]"))
 map("v", "]", surround("[", "]"))
 map("v", "{", surround("{", "}"))
-map("v", "}", surround("{", "}"))
+map("v", "}", surround("{", "}")) ]]
 
 map("v", "<leader>/", "y/<C-r>\"<CR>");
 map("v", "<leader>y", "\"+y");  --unfortunately cannot map this because map " alr
