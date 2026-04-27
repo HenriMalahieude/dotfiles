@@ -103,3 +103,5 @@ map("v", "<leader>y", "\"+y");  --unfortunately cannot map this because map " al
 --Terminal Section
 map("t", "<ESC>", "<C-\\><C-n>");
 map("t", "<esc>", "<C-\\><C-n>");
+
+require("config.lazy");
