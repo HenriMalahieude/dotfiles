@@ -1,7 +1,14 @@
 return {
+	{ --Color Theme
+		"RRethy/base16-nvim",
+		lazy = false,
+		priority = 1000,
+		config = function() --TODO: apply get something that I like better
+			vim.cmd [[colorscheme base16-onedark-dark]]
+		end,
+	},
 
-	--Git Signs
-	{
+	{ --Git Diffs in file editor
 		"lewis6991/gitsigns.nvim",
 		lazy = false,
 		opts = {
@@ -20,6 +27,130 @@ return {
 				map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
 				map("n", "<leader>tw", gitsigns.toggle_word_diff)
 			end
+		},
+	},
+
+	{ --Better Status bar in editor
+		"nvim-lualine/lualine.nvim",
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {
+			options = {
+				icons_enabled = true,
+				theme = '16color',
+				component_separators = { left = '', right = ''},
+    			section_separators = { left = '', right = ''},
+				disabled_filetypes = {
+					statusline = {'neo-tree'},
+					winbar = {'neo-tree'},
+				},
+				ignore_focus = {},
+				always_divide_middle = true,
+				always_show_tabline = true,
+				globalstatus = false,
+				refresh = {
+					statusline = 1000,
+					tabline = 1000,
+					winbar = 1000,
+					refresh_time = 16,
+					events = {
+						"WinEnter",
+						"BufEnter",
+						"BufWritePost",
+						"SessionLoadPost",
+						"FileChangedShellPost",
+						"VimResized",
+						"FileType",
+						"CursorMoved",
+						"CursorMovedI",
+						"ModeChanged",
+					},
+				},
+			},
+
+			sections = {
+				lualine_a = {'mode'},
+				lualine_b = {'branch', 'diff', 'diagnostics'},
+				lualine_c = {'filename'},
+				lualine_x = {'encoding', 'fileformat', 'filetype'},
+				lualine_y = {'location'},
+				lualine_z = {"vim.api.nvim_buf_line_count(0)"},
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {'filename'},
+				lualine_x = {'location'},
+				lualine_y = {},
+				lualine_z = {},
+			},
+			tabline = {},
+			winbar = {},
+			inactive_winbar = {},
+			extensions = {},
+		},
+	},
+
+	{ --Prettier Buffers/Tabs
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy", --Fix for if the buffer line at the top doesn't show up
+		version = "*",
+		dependencies = {'nvim-tree/nvim-web-devicons'},
+		keys = {
+    		{"<leader>bh", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
+			{"<leader>bl", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
+			{"<M-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer"},
+			{"<M-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		},
+		opts = {
+			options = {
+				numbers = "buffer_id",
+				show_close_icon = false,
+				always_show_bufferline = true,
+				--auto_toggle_bufferline = true,
+				--separator_style = "slant",
+				offsets = {
+					{
+						filetype = 'neo-tree',
+						text = "Neo-tree",
+						highlight = "Directory",
+						text_align = "left"
+					},
+				},
+			},
+		}
+	},
+
+	{--Indent scopeing and blanklines
+		"lukas-reineke/indent-blankline.nvim",
+		--event = "LazyFile", --we aren't using lazy vim, whoops
+		main = 'ibl',
+		opts = {
+			--indent = {char = "|", tab_char = "|"},
+			scope = {show_start = false, show_end = false},
+			exclude = {
+				filetypes = {
+					"Trouble",
+					"trouble",
+					"help",
+					"lazy",
+					"meson",
+					"neo-tree",
+					"terminal",
+					"toggleterm",
+				},
+			},
+		},
+	},
+
+	{--Better cursor tracking, and fun :)
+		"sphamba/smear-cursor.nvim",
+		opts = {
+			smear_insert_mode = false,
+
+			stiffness = 0.8,
+			trailing_stiffness = 0.6,
+			damping = 0.95,
+			distance_stop_animating = 0.5,
 		},
 	},
 }

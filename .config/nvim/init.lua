@@ -1,6 +1,5 @@
 --Standard
 vim.g.mapleader = " "
-vim.g.title = true
 
 --NetRW Configs
 vim.g.netrw_banner = 0
@@ -16,26 +15,26 @@ vim.opt.number = true
 --vim.opt.relativenumber = false --for now I don't enjoy this
 --vim.opt.mouse = 'a' --annoying
 vim.opt.showbreak = "> "
-vim.opt.showtabline = 1
+--vim.opt.showtabline = 1
+
 vim.opt.tabstop = 4 --spaces
 vim.opt.shiftwidth = 4
+
 vim.opt.fileencoding = "utf-8"
 vim.opt.pumheight = 5
-vim.opt.showtabline = 2
-vim.opt.laststatus = 2
-vim.opt.showcmd = true
-vim.opt.showmode = true
+--vim.opt.showtabline = 2
+--vim.opt.laststatus = 2
+--vim.opt.showcmd = true
+--vim.opt.showmode = true
 vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.termguicolors = true
-vim.cmd('colorscheme koehler')
-vim.cmd('filetype plugin on')
-vim.cmd('set wildmenu')
-
---vim.cmd('let loaded_matchparen=1') -- there seems to be a weird bug related to it
---vim.cmd('NoMatchParen')
+vim.opt.cmdheight = 0
+--vim.cmd('colorscheme koehler')
+--vim.cmd('filetype plugin on')
+--vim.cmd('set wildmenu')
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
@@ -69,9 +68,11 @@ map("n", "<leader>t", ":new . <CR>:term<CR><C-w>J:resize 15<CR>") --Create VSCod
 map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 --map("n", "<leader><leader>", "@@") --repeat a saved method
 ---Else
-map('n', '<M-l>', ":tabn<CR>");
-map('n', '<M-h>', ":tabp<CR>");
-map('n', '<M-w>', ":tabnew .<CR>");
+
+-- Old tab management, switching to buffers with bufferline.nvim
+--map('n', '<M-l>', ":tabn<CR>");
+--map('n', '<M-h>', ":tabp<CR>");
+--map('n', '<M-w>', ":tabnew .<CR>");
 map("n", "<esc>", ":noh<cr>")
 
 --unmap("n", "J") --join, but that's annoying
@@ -80,22 +81,8 @@ map("n", "J", "Lzz")
 --unmap("n", "K") --on unix it's mapped to 'man', but idc
 map("n", "K", "Hzz")
 
---Visual Section
---[[
-function surround(charL, charR)
-	return ":<esc>`>a" .. charR .. "<esc>`<i" .. charL .. "<esc>"
-end
-map("v", "'", surround("'", "'"))
-map("v", "\"\"", surround("\"", "\""))
-map("v", "(", surround("(", ")"))
-map("v", ")", surround("(", ")"))
-map("v", "[", surround("[", "]"))
-map("v", "]", surround("[", "]"))
-map("v", "{", surround("{", "}"))
-map("v", "}", surround("{", "}")) ]]
-
 map("v", "<leader>/", "y/<C-r>\"<CR>");
-map("v", "<leader>y", "\"+y");  --unfortunately cannot map this because map " alr
+map("v", "<leader>y", "\"+y");
 
 --Insert Section
 --map("i", "jk", "<esc>")
