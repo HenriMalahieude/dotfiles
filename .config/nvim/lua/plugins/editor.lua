@@ -36,7 +36,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = '16color',
+				--theme = '16color',
 				component_separators = { left = '', right = ''},
     			section_separators = { left = '', right = ''},
 				disabled_filetypes = {
@@ -125,8 +125,17 @@ return {
 		--event = "LazyFile", --we aren't using lazy vim, whoops
 		main = 'ibl',
 		opts = {
-			--indent = {char = "|", tab_char = "|"},
-			scope = {show_start = false, show_end = false},
+			indent = {
+				char = "╎",
+				tab_char = "╎",
+			},
+			scope = {
+				--show_start = false, show_end = false
+				enabled = false, --I don't have an LSP or Treesitter so
+			},
+			whitespace = {
+				highlight = {"Whitespace", "NonText"},
+			},
 			exclude = {
 				filetypes = {
 					"Trouble",

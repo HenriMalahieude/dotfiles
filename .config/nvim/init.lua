@@ -2,10 +2,10 @@
 vim.g.mapleader = " "
 
 --NetRW Configs
-vim.g.netrw_banner = 0
+--vim.g.netrw_banner = 0
 --vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 1
-vim.g.netrw_liststyle = 3
+--vim.g.netrw_altv = 1
+--vim.g.netrw_liststyle = 3
 
 --Options
 vim.opt.syntax = "ON"
@@ -59,17 +59,17 @@ end
 
 --Normal Section
 ---Leader
-map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
-map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
-map("n", "<leader>e", ":vnew .<CR>") --split window and open netrw
-map("n", "<leader>E", ":new .<CR>") --split window horizontal and open netrw
-map("n", "<leader>.", ":e .<CR>") --find a new location
-map("n", "<leader>t", ":new . <CR>:term<CR><C-w>J:resize 15<CR>") --Create VSCode style terminal
+--map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
+--map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
+--map("n", "<leader>e", ":vnew .<CR>") --split window and open netrw
+--map("n", "<leader>E", ":new .<CR>") --split window horizontal and open netrw
+--map("n", "<leader>.", ":e .<CR>") --find a new location
+map("n", "<leader>t", "<cmd>split<cr><cmd>term<cr><C-w>J<cmd>resize 15<cr>") --Create VSCode style terminal
 map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 --map("n", "<leader><leader>", "@@") --repeat a saved method
 ---Else
 
--- Old tab management, switching to buffers with bufferline.nvim
+--Old tab management, switching to buffers with bufferline.nvim
 --map('n', '<M-l>', ":tabn<CR>");
 --map('n', '<M-h>', ":tabp<CR>");
 --map('n', '<M-w>', ":tabnew .<CR>");

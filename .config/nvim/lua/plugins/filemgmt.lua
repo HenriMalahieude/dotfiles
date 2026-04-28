@@ -8,21 +8,63 @@ return {
 			"MunifTanjim/nui.nvim",
     		"nvim-tree/nvim-web-devicons",
 		},
+		keys = {
+			{"<leader>gs", "<cmd>Neotree float git_status<cr>", desc = "Open Git Status in floating pane"},
+			{"<leader>.", "<cmd>Neotree toggle left<cr>", desc = "Toggle Neo-tree in the side bar"},
+			{"<leader>e", "<cmd>vsplit<cr><cmd>Neotree current<cr>", desc = "Open a vertical split with Neo-tree ready"},
+			{"<leader>E",  "<cmd>split<cr><cmd>Neotree current<cr>", desc = "Open a horizontal split with Neo-tree ready"},
+		},
 		opts = {
-			sources = {"filesystem", "buffers", "git_status"},
-			open_files_do_not_replace_types = {"term", "terminal", "Trouble", "trouble", "qf", "Outline"},
-			filesystem = {
-				bind_to_cwd = false,
-				follow_current_file = {enabled = true},
-			},
-			window = {
-				mapping_options = {
-					noremap = true,
-					nowait = false,
-				},
-				mappings = {
+			close_if_last_window = true,
+			clipboard = {sync = "global"},
+			--sources = {"filesystem", "buffers", "git_status"},
+			enable_git_status = true,
+			--enable_diagnostics = true,
+			open_files_using_relative_paths = true,
+			use_libuv_file_watcher = true,
 
-				}
+			open_files_do_not_replace_types = {
+				"term",
+				"terminal",
+				"Trouble",
+				"trouble",
+				"qf",
+				"Outline"
+			},
+
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_gitignored = false,
+					hide_ignored = false,
+					hide_hidden = false,
+					never_show = { ".git" },  --chat we want to avoid interacting with ti
+				},
+				follow_current_file = {enabled = true},
+				bind_to_cwd = true,
+			},
+
+			default_component_configs = {
+				git_status = {
+					symbols = { --similar to vscode
+						--Change Tracking
+						added = "+",
+						modified = "M",
+						renamed = "R",
+						--Git Tracking
+						untracked = "U",
+						ignored = "I",
+						unstaged = "_",
+						staged = "S",
+						conflict = "!",
+					},
+				},
+			},
+
+			window = {
+				mappings = {
+					["t"] = "noop", --since i don't use tabs, but buffers instead
+				},
 			},
 		},
 	},
