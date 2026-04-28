@@ -120,7 +120,7 @@ return {
 		}
 	},
 
-	{--Indent scopeing and blanklines
+	{--Indent scoping and blanklines
 		"lukas-reineke/indent-blankline.nvim",
 		--event = "LazyFile", --we aren't using lazy vim, whoops
 		main = 'ibl',
@@ -160,6 +160,26 @@ return {
 			trailing_stiffness = 0.6,
 			damping = 0.95,
 			distance_stop_animating = 0.5,
+		},
+	},
+
+	{ --Vscode style file change tracker
+		"petertriho/nvim-scrollbar",
+		dependencies = {
+			--"kevinhwang91/nvim-hlslens",
+			"lewis6991/gitsigns.nvim",
+		},
+		event = "VeryLazy",
+		opts = {
+			excluded_filetypes = {
+				"neo-tree",
+				"lazy"
+			},
+
+			handlers = {
+				gitsigns = true,
+				--search = true,
+			}
 		},
 	},
 }

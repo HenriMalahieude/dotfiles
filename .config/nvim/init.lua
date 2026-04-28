@@ -92,3 +92,4 @@ map("t", "<ESC>", "<C-\\><C-n>");
 map("t", "<esc>", "<C-\\><C-n>");
 
 require("config.lazy");
+map('n', '<leader>l', '<cmd>Lazy<cr>');
