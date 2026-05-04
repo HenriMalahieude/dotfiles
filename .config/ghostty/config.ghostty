@@ -1,1 +1,4 @@
 theme = Pro
+font-family = Ubuntu Mono Nerd Font
+#font-feature = -liga, -clig, -calt
+

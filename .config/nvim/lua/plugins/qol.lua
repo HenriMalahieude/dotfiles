@@ -46,4 +46,40 @@ return {
 			},
 		},
 	},
+
+	--[[{ --Doesn't work?
+		"laytan/cloak.nvim",
+		opts = {
+			enabled = true,
+			cloak_character = "*",
+			cloak_length = nil,
+
+			highlight_group = 'Comment',
+
+			try_all_patterns = true,
+			cloak_telescope = false, --don't have it
+			cloak_on_leave = true,
+
+			patterns = {
+				file_pattern = '.env*',
+				cloak_pattern = "=.+",
+				replace = nil,
+			},
+		},
+	}, --]]
+
+
+	--[[{ //Idk if it's very necessary
+		"rachartier/tiny-glimmer.nvim",
+		event = "VeryLazy",
+		priority = 10,
+		opts = {
+			autoreload = true,
+			overwrite = {
+				paste = {
+					enabled = false,
+				},
+			},
+		},
+	}, --]]
 }
