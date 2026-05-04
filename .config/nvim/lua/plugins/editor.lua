@@ -156,14 +156,23 @@ return {
 		opts = {
 			smear_insert_mode = false,
 
-			stiffness = 0.8,
+			stiffness = 0.8, --fast mode
 			trailing_stiffness = 0.6,
 			damping = 0.95,
 			distance_stop_animating = 0.5,
 		},
 	},
 
-	{ --Vscode style file change tracker
+	--[[{ --doesn't work
+		"kevinhwang91/nvim-hlslens",
+		keys = {
+			{'*', "*<cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
+			{'n', "<cmd>execute('normal! ' . v:count1 . 'n')<cr><cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
+			{'N', "<cmd>execute('normal! ' . v:count1 . 'N')<cr><cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
+		},
+	}, --]]
+
+	--[[{ --Vscode style file change tracker
 		"petertriho/nvim-scrollbar",
 		dependencies = {
 			--"kevinhwang91/nvim-hlslens",
@@ -180,6 +189,28 @@ return {
 				gitsigns = true,
 				--search = true,
 			}
+		},
+	}, --]]
+
+	{ --this also includes search results
+		"lewis6991/satellite.nvim",
+		dependencies = {
+			"lewis6991/gitsigns.nvim"
+		},
+		opts = {
+			current_only = false,
+			excluded_filetypes = {
+				"neo-tree",
+				"lazy",
+			},
+
+			handlers = {
+				cursor = {enable = true},
+				search = {enable = true},
+				diagnostic = {enable = false}, --no lsp
+				gitsigns = {enable = true},
+				marks = {enabled = true},
+			},
 		},
 	},
 }

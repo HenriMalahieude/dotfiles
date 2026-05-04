@@ -8,8 +8,8 @@ return {
 		},
 	}, --]]
 
-	--[[ --Doesn't work because of experimental state
-	{ --Notifications, but doesn't change E#### errors that nvim spits out. Grr
+	--Does work, just needed most recent neovim version
+	--[[{
 		"rcarriga/nvim-notify",
 		lazy = false,
 		opts = {
@@ -22,7 +22,7 @@ return {
 
 			vim.notify = notif
 		end,
-	},
+	}, --]]
 
 	{ --Override the default notifications
 		"folke/noice.nvim",
@@ -31,13 +31,14 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		opts = {
-			lsp = { enabled = false },
-			notify = { enabled = true, view="notify" },
+			lsp = { enabled = false }, --no lsp
+			cmdline = { view = "cmdline" }, --default, cause I prefer that
 		},
 	}, --]]
 
 	{
 		"folke/snacks.nvim",
+		priority = 1000,
 		opts = {
 			bigfile = {
 				notify = true,
