@@ -36,9 +36,23 @@ vim.opt.cmdheight = 0
 --vim.cmd('filetype plugin on')
 --vim.cmd('set wildmenu')
 
+--Remove trailing whitespace
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
 	command = [[%s/\s\+$//e]],
+})
+
+--Highlight what ever you are yanking
+local yank_group = vim.api.nvim_create_augroup('HighlightYank', {})
+vim.api.nvim_create_autocmd({ "TextYankPost" }, { --Shamelessly stolen from ThePrimeagen's dotfiles
+	group = yank_group,
+	pattern = { "*" },
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 50,
+		})
+	end
 })
 
 function map(mode, lhs, rhs, opts)
