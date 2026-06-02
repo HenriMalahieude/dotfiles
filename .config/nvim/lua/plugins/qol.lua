@@ -42,8 +42,37 @@ return {
 		opts = {
 			bigfile = {
 				notify = true,
-				size = 1 * 1024 * 1024,
-				line_length = 1500,
+				size = 1 * 1024 * 500, --500 KiB
+				line_length = 1000,
+
+				setup = function(ctx)
+					if not vim.api.nvim_buf_is_valid(ctx.buf)
+						 or ctx.ft == 'neo-tree' then
+						return
+					end
+
+					if vim.fn.exists(":NoMatchParen") then
+						vim.cmd([[NoMatchParen]])
+					end
+
+					--[[ local sm = require('smear_cursor')
+					sm.smear_horizontally = false
+					sm.smear_vertically = false
+					sm.smear_diagonally = false --]]
+
+					vim.cmd([[Gitsigns toggle_signs false]])
+					
+					vim.cmd([[SatelliteDisable]])
+
+					local ibl = require('ibl')
+					ibl.enabled = false
+
+					vim.schedule(function()
+						if vim.api.nvim_buf_is_valid(ctx.buf) then
+							vim.bo[ctx.buf].syntax = ctx.ft
+						end
+					end)
+				end
 			},
 		},
 	},

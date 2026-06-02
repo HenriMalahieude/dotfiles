@@ -32,7 +32,9 @@ return {
 
 	{ --Better Status bar in editor
 		"nvim-lualine/lualine.nvim",
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		dependencies = {
+			'nvim-tree/nvim-web-devicons',
+		},
 		opts = {
 			options = {
 				icons_enabled = true,
@@ -88,6 +90,14 @@ return {
 			inactive_winbar = {},
 			extensions = {},
 		},
+		config = function(_, opts)
+			local custom_16color = require('lualine.themes.16color')
+			custom_16color.inactive.a.bg = "#0F0F0F"
+			custom_16color.inactive.b.bg = "#0F0F0F"
+			custom_16color.inactive.c.bg = "#0F0F0F"
+			opts.options.theme = custom_16color
+			require('lualine').setup(opts)
+		end
 	},
 
 	{ --Prettier Buffers/Tabs
@@ -209,7 +219,7 @@ return {
 				search = {enable = true},
 				diagnostic = {enable = false}, --no lsp
 				gitsigns = {enable = true},
-				marks = {enabled = true},
+				marks = {enable = true},
 			},
 		},
 	},

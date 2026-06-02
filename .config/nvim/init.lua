@@ -32,6 +32,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
+vim.g.clipboard = 'xclip'
 --vim.cmd('colorscheme koehler')
 --vim.cmd('filetype plugin on')
 --vim.cmd('set wildmenu')
