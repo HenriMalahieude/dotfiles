@@ -35,6 +35,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec_always --no-startup-id nitrogen --restore
+
 for_window [class=".*"] title_window_icon yes
 force_display_urgency_hint 500 ms
 hide_edge_borders smart_no_gaps
