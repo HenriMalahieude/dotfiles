@@ -43,9 +43,11 @@ exec_always --no-startup-id xinput --set-prop "pointer:Logitech G Pro " "libinpu
 exec_always --no-startup-id xinput --set-prop "pointer:Logitech G Pro " "libinput Accel Speed" 0.3
 exec_always --no-startup-id xinput --set-prop "MSFT0001:01 06CB:7F28 Touchpad" "libinput Natural Scrolling Enabled" 1
 
+#other i3 settings on startup
 for_window [class=".*"] title_window_icon yes
 force_display_urgency_hint 500 ms
 hide_edge_borders smart_no_gaps
+#mouse_warping none
 #for_window [class=steam_friends] floating enable
 #no_focus [class=steam_friends]
 
