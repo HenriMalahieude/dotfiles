@@ -1,4 +1,5 @@
 set $mod Mod4
+set $alt Mod1
 set $key_equal 	21
 set $key_minus 	20
 set $key_a 		38
@@ -20,8 +21,8 @@ font pango:UbuntuMono Nerd Font Mono 10
 
 # Laptop, locate the other monitor, set it as primary
 # Change as needed per setup
-exec --no-startup-id xrandr --output $primary_monitor --auto --above $secondary_monitor #for the laptop
-exec --no-startup-id xrandr --output $primary_monitor --primary
+exec_always --no-startup-id xrandr --output $primary_monitor --auto --above $secondary_monitor #for the laptop
+exec_always --no-startup-id xrandr --output $primary_monitor --primary
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -30,6 +31,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xset s 600 #default of 10m for screen saver
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -67,6 +69,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+
+#lock screen
+bindsym $mod+$alt+l exec xset s activate
 
 # kill focused window
 bindsym $mod+q kill
@@ -167,14 +172,14 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 #Move screen
-bindsym $mod+x move workspace to output next
+bindsym $mod+x move container to output next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# shutdown pc
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to shutdown?' -B 'Yes, shutdown' 'shutdown now'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

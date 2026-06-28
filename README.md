@@ -6,4 +6,8 @@ That's alright, but there are some niceties that come from those plugins.
 
 ## Linux Packages
 * ripgrep
-* xclip (for x11)
+* xclip (for neovim)
+
+### Fedora
+* xset
+* xkill
