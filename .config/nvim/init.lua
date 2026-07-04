@@ -12,7 +12,7 @@ vim.opt.syntax = "ON"
 vim.opt.backup = false
 vim.opt.compatible = false
 vim.opt.number = true
---vim.opt.relativenumber = false --for now I don't enjoy this
+vim.opt.relativenumber = true
 --vim.opt.mouse = 'a' --annoying
 vim.opt.showbreak = "> "
 --vim.opt.showtabline = 1
@@ -21,7 +21,7 @@ vim.opt.tabstop = 4 --spaces
 vim.opt.shiftwidth = 4
 
 vim.opt.fileencoding = "utf-8"
-vim.opt.pumheight = 5
+vim.opt.pumheight = 5 --pop up menu
 --vim.opt.showtabline = 2
 --vim.opt.laststatus = 2
 --vim.opt.showcmd = true
@@ -74,8 +74,9 @@ end
 
 --Normal Section
 ---Leader
+--Old file management, switched to Neo-tree
 --map("n", "<leader>dot", ":!make -C ~/dotfiles<CR>");
---map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
+map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>") --reload nvim init
 --map("n", "<leader>e", ":vnew .<CR>") --split window and open netrw
 --map("n", "<leader>E", ":new .<CR>") --split window horizontal and open netrw
 --map("n", "<leader>.", ":e .<CR>") --find a new location
@@ -83,6 +84,16 @@ map("n", "<leader>t", "<cmd>split<cr><cmd>term<cr><C-w>J<cmd>resize 15<cr>") --C
 map("n", "<leader>p", "\"+p"); --pasting from system clipboard
 --map("n", "<leader><leader>", "@@") --repeat a saved method
 ---Else
+
+--Window Control
+map("n", "<C-h>", "<C-w>h")
+--map("n", "<C-S-h>", "<C-w>H")
+map("n", "<C-j>", "<C-w>j")
+--map("n", "<C-S-j>", "<C-w>J")
+map("n", "<C-k>", "<C-w>k")
+--map("n", "<C-K>", "<C-w>K")
+map("n", "<C-l>", "<C-w>l")
+--map("n", "<C-L>", "<C-w>L")
 
 --Old tab management, switching to buffers with bufferline.nvim
 --map('n', '<M-l>', ":tabn<CR>");
@@ -96,7 +107,7 @@ map("n", "J", "Lzz")
 --unmap("n", "K") --on unix it's mapped to 'man', but idc
 map("n", "K", "Hzz")
 
-map("v", "<leader>/", "y/<C-r>\"<CR>");
+map("v", "/", "y/<C-r>\"<CR>");
 map("v", "<leader>y", "\"+y");
 
 --Insert Section
