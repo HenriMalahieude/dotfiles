@@ -1,28 +1,4 @@
 return {
-	--[[{ --Helpful extra keys, might remove
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {},
-		keys = {
-			{"<leader>?", function() require("which-key").show({ global = false }) end, desc = "Buffer Local Keymaps (which-key)"},
-		},
-	}, --]]
-
-	--Does work, just needed most recent neovim version
-	--[[{
-		"rcarriga/nvim-notify",
-		lazy = false,
-		opts = {
-			stages = "fade_in_slide_out",
-			timeout = 3000,
-		},
-		config = function(_, opts)
-			notif = require("notify")
-			notif.setup(opts)
-
-			vim.notify = notif
-		end,
-	}, --]]
 
 	{ --Override the default notifications
 		"folke/noice.nvim",
@@ -61,7 +37,7 @@ return {
 					sm.smear_diagonally = false --]]
 
 					vim.cmd([[Gitsigns toggle_signs false]])
-					
+
 					vim.cmd([[SatelliteDisable]])
 
 					local ibl = require('ibl')
@@ -77,7 +53,7 @@ return {
 		},
 	},
 
-	--[[{ --Doesn't work?
+	--[[{ --Doesn't work?, I do want this though
 		"laytan/cloak.nvim",
 		opts = {
 			enabled = true,
@@ -98,18 +74,4 @@ return {
 		},
 	}, --]]
 
-
-	--[[{ //Idk if it's very necessary
-		"rachartier/tiny-glimmer.nvim",
-		event = "VeryLazy",
-		priority = 10,
-		opts = {
-			autoreload = true,
-			overwrite = {
-				paste = {
-					enabled = false,
-				},
-			},
-		},
-	}, --]]
 }

@@ -1,10 +1,10 @@
 return {
-	{ --Color Theme
-		"RRethy/base16-nvim",
+	{
+		"HenriMalahieude/xterm-tmux.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function() --TODO: apply get something that I like better
-			vim.cmd [[colorscheme base16-onedark-dark]]
+		config = function()
+			vim.cmd [[colorscheme tmux-system]]
 		end,
 	},
 
@@ -38,17 +38,19 @@ return {
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = '16color',
-				component_separators = { left = '', right = ''},
-    			section_separators = { left = '', right = ''},
+				theme = 'tmux-system',
+				--component_separators = { left = '', right = ''},
+				section_separators = { left = '', right = '' }, --┃
+    			--section_separators = { left = '', right = ''},
+				component_separators = { left = '│', right = '│' },
 				disabled_filetypes = {
-					statusline = {'neo-tree'},
-					winbar = {'neo-tree'},
+					--statusline = {'neo-tree'},
+					--winbar = {'neo-tree'},
 				},
 				ignore_focus = {},
 				always_divide_middle = true,
-				always_show_tabline = true,
-				globalstatus = false,
+				always_show_tabline = false,
+				globalstatus = true,
 				refresh = {
 					statusline = 1000,
 					tabline = 1000,
@@ -71,9 +73,13 @@ return {
 
 			sections = {
 				lualine_a = {'mode'},
-				lualine_b = {'branch', 'diff', 'diagnostics'},
+				lualine_b = {'branch', 'diagnostics'},
 				lualine_c = {'filename'},
-				lualine_x = {'encoding', 'fileformat', 'filetype'},
+				lualine_x = {
+					'searchcount',
+					'fileformat',
+					{'filetype', colored = false}
+				},
 				lualine_y = {'location'},
 				lualine_z = {"vim.api.nvim_buf_line_count(0)"},
 			},
@@ -81,7 +87,7 @@ return {
 				lualine_a = {},
 				lualine_b = {},
 				lualine_c = {'filename'},
-				lualine_x = {'location'},
+				lualine_x = {{'filetype', colored = false}},
 				lualine_y = {},
 				lualine_z = {},
 			},
@@ -90,14 +96,14 @@ return {
 			inactive_winbar = {},
 			extensions = {},
 		},
-		config = function(_, opts)
+		--[[config = function(_, opts)
 			local custom_16color = require('lualine.themes.16color')
 			custom_16color.inactive.a.bg = "#0F0F0F"
 			custom_16color.inactive.b.bg = "#0F0F0F"
 			custom_16color.inactive.c.bg = "#0F0F0F"
 			opts.options.theme = custom_16color
 			require('lualine').setup(opts)
-		end
+		end --]]
 	},
 
 	{ --Prettier Buffers/Tabs
@@ -113,11 +119,20 @@ return {
 		},
 		opts = {
 			options = {
+				mode = "buffers",
+				themable = true,
 				numbers = "buffer_id",
 				show_close_icon = false,
+				show_buffer_close_icons = false,
+				indicator = {
+					icon = '│', -- this should be omitted if indicator style is not 'icon'
+					style = 'icon',
+				},
+				diagnostics = false,
 				always_show_bufferline = true,
 				--auto_toggle_bufferline = true,
 				--separator_style = "slant",
+				hover = { enabled = false },
 				offsets = {
 					{
 						filetype = 'neo-tree',
@@ -172,35 +187,6 @@ return {
 			distance_stop_animating = 0.5,
 		},
 	},
-
-	--[[{ --doesn't work
-		"kevinhwang91/nvim-hlslens",
-		keys = {
-			{'*', "*<cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
-			{'n', "<cmd>execute('normal! ' . v:count1 . 'n')<cr><cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
-			{'N', "<cmd>execute('normal! ' . v:count1 . 'N')<cr><cmd>lua require('hlslens').start()<cr>", noremap = true, silent = true},
-		},
-	}, --]]
-
-	--[[{ --Vscode style file change tracker
-		"petertriho/nvim-scrollbar",
-		dependencies = {
-			--"kevinhwang91/nvim-hlslens",
-			"lewis6991/gitsigns.nvim",
-		},
-		event = "VeryLazy",
-		opts = {
-			excluded_filetypes = {
-				"neo-tree",
-				"lazy"
-			},
-
-			handlers = {
-				gitsigns = true,
-				--search = true,
-			}
-		},
-	}, --]]
 
 	{ --this also includes search results
 		"lewis6991/satellite.nvim",

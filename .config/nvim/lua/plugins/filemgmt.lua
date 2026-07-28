@@ -19,7 +19,7 @@ return {
 			clipboard = {sync = "global"},
 			--sources = {"filesystem", "buffers", "git_status"},
 			enable_git_status = true,
-			--enable_diagnostics = true,
+			enable_diagnostics = false,
 			open_files_using_relative_paths = true,
 			use_libuv_file_watcher = true,
 
@@ -68,17 +68,4 @@ return {
 			},
 		},
 	},
-
-	--[[ I don't think it works with neositter
-	{ --workspace finder
-		"ahmedkhalf/project.nvim",
-		event = "VeryLazy",
-		config = function(_, opts)
-			require('project_nvim').setup{
-				detection_methods = {"pattern"},
-				patterns = {".git", "Makefile"},
-			}
-
-		end,
-	}, --]]
 }
