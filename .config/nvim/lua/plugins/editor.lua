@@ -124,6 +124,7 @@ return {
 				numbers = "buffer_id",
 				show_close_icon = false,
 				show_buffer_close_icons = false,
+				separator_style = { '│', '│' };
 				indicator = {
 					icon = '│', -- this should be omitted if indicator style is not 'icon'
 					style = 'icon',
