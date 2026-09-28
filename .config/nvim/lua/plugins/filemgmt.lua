@@ -41,7 +41,7 @@ return {
 					never_show = { ".git" },  --chat we want to avoid interacting with ti
 				},
 				follow_current_file = {enabled = true},
-				bind_to_cwd = true,
+				bind_to_cwd = false,
 			},
 
 			default_component_configs = {
