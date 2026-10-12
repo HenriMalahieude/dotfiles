@@ -3,7 +3,11 @@ return {
 		"HenriMalahieude/xterm-tmux.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
+		opts = {
+			terminal_colors=true, --I don't think this works :skull:
+		},
+		config = function(_, opts)
+			require("xterm-tmux").setup(opts)
 			vim.cmd [[colorscheme tmux-system]]
 		end,
 	},

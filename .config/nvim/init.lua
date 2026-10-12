@@ -19,6 +19,8 @@ vim.opt.showbreak = "> "
 
 vim.opt.tabstop = 4 --spaces
 vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true --insert spaces instead of tabs
 
 vim.opt.fileencoding = "utf-8"
 vim.opt.pumheight = 5 --pop up menu
@@ -39,37 +41,37 @@ vim.g.clipboard = 'xclip'
 
 --Remove trailing whitespace
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = [[%s/\s\+$//e]],
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
 })
 
 --Highlight what ever you are yanking
 local yank_group = vim.api.nvim_create_augroup('HighlightYank', {})
 vim.api.nvim_create_autocmd({ "TextYankPost" }, { --Shamelessly stolen from ThePrimeagen's dotfiles
-	group = yank_group,
-	pattern = { "*" },
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 50,
-		})
-	end
+    group = yank_group,
+    pattern = { "*" },
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 50,
+        })
+    end
 })
 
 function map(mode, lhs, rhs, opts)
-	local options = {noremap = true}
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = {noremap = true}
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 function unmap(mode, lhs)
-	local status, err = pcall(vim.api.nvim_del_keymap(mode, lhs))
-	if not status then
-		print("Could not unmap " .. mode .. " " .. lhs .. ": " .. err)
-	end
-	return status
+    local status, err = pcall(vim.api.nvim_del_keymap(mode, lhs))
+    if not status then
+        print("Could not unmap " .. mode .. " " .. lhs .. ": " .. err)
+    end
+    return status
 end
 
 --Normal Section
