@@ -1,0 +1,35 @@
+{
+    "autoUpdate": true,
+    "model": "opus",
+    "workflowKeywordTriggerEnabled": false,
+    "spinnerTipsEnabled": false,
+    "modelSettings": {
+        "claude-opus-5-5": {
+            "effortLevel": "medium"
+        }
+    },
+    "promptSuggestionEnabled": false,
+    "awaySummaryEnabled": false,
+    "prefersReducedMotion": true,
+    "timeFormat": "auto",
+    "theme": "dark-ansi",
+    "editorMode": "normal",
+    "permissions": {
+        "allow": [
+            "Bash(*objdump *)",
+            "Bash(grep *)",
+            "Bash(*-nm *)",
+            "Bash(git ls-tree *)",
+            "Edit(//tmp/claude-*/**)"
+        ],
+        "ask": [
+            "Bash(awk *)",
+            "Bash(sed -i *)",
+            "Edit(~/**)"
+        ],
+        "deny": [
+            "Bash(git add *)",
+            "Bash(git commit *)"
+        ]
+    }
+}
